@@ -360,6 +360,35 @@ docker push mahshamim/xyz-technologies:latest
 Configure Jenkins to build and push Docker images after packaging.
 
 #### 3.6 Write Jenkinsfile:
+To automatically deploy your project when you push code to Git (e.g., GitHub) using Jenkins, you need to set up a Jenkins pipeline with a Git webhook. Here's how you can achieve this:
+
+### 3.6.1. **Set up Jenkins**
+
+- **Install Jenkins**: If you haven't already, install Jenkins on your server.
+- **Install Necessary Plugins**: Make sure the following plugins are installed:
+    - Git Plugin (for integrating Git with Jenkins)
+    - GitHub Integration Plugin (optional if using GitHub)
+    - Pipeline Plugin (if you're using Jenkins pipelines)
+
+### 3.6.2. **Create a New Jenkins Job (Freestyle or Pipeline)**
+
+- **Freestyle Job**:
+    1. Go to Jenkins dashboard > New Item.
+    2. Select "Freestyle project" and provide a name for the job.
+    3. Under **Source Code Management**, select **Git** and provide the repository URL (e.g., GitHub) and credentials.
+    4. Under **Build Triggers**, select **GitHub hook trigger for GITScm polling** (if using GitHub) or configure a webhook in GitLab/Bitbucket for similar functionality.
+    5. Add **Build Steps** (e.g., run a script to deploy your app, such as `docker-compose up`, `npm run build`, or any other deployment commands).
+    6. Save and build.
+
+       | GitHub Project url                                                  | GitHub hook trigger for GITScm polling                                                  |
+       |-------------------------------------------------------------------|--------------------------------------------------------------------|
+       | ![GitHub Project url](./images/configure-github-project-url.png) | ![GitHub hook trigger for GITScm polling](./images/github-hook-trigger-for-git-scm-polling.png) |
+
+- **Pipeline Job**:
+    1. Go to Jenkins dashboard > New Item.
+    2. Select **Pipeline** and provide a name for the job.
+    3. Under **Pipeline Definition**, you can either configure the pipeline directly in the **Pipeline Script** or use a `Jenkinsfile` stored in your repository.
+
 Here’s a basic *Jenkinsfile* for CI/CD:
 ```groovy
 pipeline {
@@ -451,6 +480,31 @@ pipeline {
 | Pipeline Console                                                  | Pipeline Overview                                                  |
 |-------------------------------------------------------------------|--------------------------------------------------------------------|
 | ![basic *Jenkinsfile* for CI/CD](./images/pipeline-console-1.png) | ![basic *Jenkinsfile* for CI/CD](./images/pipeline-overview-1.png) |
+
+### 3.6.3. **Set Up Git Webhook**
+
+- **GitHub**:
+    1. Go to your GitHub repository > Settings > Webhooks.
+    2. Click **Add webhook**.
+    3. In the **Payload URL**, enter the Jenkins webhook URL. It usually looks like `http://your-jenkins-url/github-webhook/`.
+    4. Set **Content type** to `application/json`.
+    5. In **Which events would you like to trigger this webhook?**, select **Just the push event**.
+    6. Save the webhook.
+
+       | GitHub Project url                              | GitHub hook trigger for GITScm polling          |
+              |-------------------------------------------------|-------------------------------------------------|
+       | ![GitHub Webhook](./images/github-hooks-01.png) | ![GitHub Webhook](./images/github-hooks-02.png) |
+       | ![GitHub Webhook](./images/github-hooks-03.png) | ![GitHub Webhook](./images/github-hooks-04.png) |
+
+
+- **GitLab/Bitbucket**: Follow the similar steps to configure the webhook to point to your Jenkins server.
+
+### 3.6.4. **Test the Automation**
+
+- Push changes to your Git repository.
+- The webhook should trigger Jenkins to start the job, and Jenkins should automatically deploy the application based on the defined steps in your pipeline.
+
+This setup will ensure that Jenkins automatically triggers and deploys whenever a push is made to the repository.
 
 
 #### 3.7 Configure Deployment Using Ansible:
