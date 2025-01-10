@@ -491,7 +491,7 @@ pipeline {
     5. In **Which events would you like to trigger this webhook?**, select **Just the push event**.
     6. Save the webhook.
 
-       | GitHub Project url                              | GitHub hook trigger for GITScm polling          |
+       | IMAGE                                           | IMAGE                                           |
        |-------------------------------------------------|-------------------------------------------------|
        | ![GitHub Webhook](./images/github-hooks-01.png) | ![GitHub Webhook](./images/github-hooks-02.png) |
        | ![GitHub Webhook](./images/github-hooks-03.png) | ![GitHub Webhook](./images/github-hooks-04.png) |
@@ -555,9 +555,9 @@ pipeline {
     }
 }
 ```
-| Pipeline Console                                                                | Pipeline Overview                                                             |
-|---------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| ![Ansible, Docker and Kubernetes Pipeline CI/CD](./images/pipeline-console.png) | ![Ansible, Docker and Kubernetes Pipeline CI/CD](./images/pipeline-graph.png) |
+| Pipeline Status                                                                    | Pipeline Console                                                                 | Pipeline Overview                                                             |
+|------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| ![Ansible, Docker and Kubernetes Pipeline CI/CD](./images/pipe-line-status-00.png) |  ![Ansible, Docker and Kubernetes Pipeline CI/CD](./images/pipeline-console.png) | ![Ansible, Docker and Kubernetes Pipeline CI/CD](./images/pipeline-graph.png) |
 
 
 Create an Ansible playbook for deployment:
