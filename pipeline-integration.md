@@ -477,9 +477,9 @@ pipeline {
     }
 }
 ```
-| Pipeline Console                                                  | Pipeline Overview                                                  |
-|-------------------------------------------------------------------|--------------------------------------------------------------------|
-| ![basic *Jenkinsfile* for CI/CD](./images/pipeline-console-1.png) | ![basic *Jenkinsfile* for CI/CD](./images/pipeline-overview-1.png) |
+| Pipeline Status                                                  | Pipeline Console                                  | Pipeline Overview                                                  |
+|------------------------------------------------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
+| ![basic *Jenkinsfile* for CI/CD](./images/pipe-line-status.png)  | ![basic *Jenkinsfile* for CI/CD](./images/pipeline-console-1.png) | ![basic *Jenkinsfile* for CI/CD](./images/pipeline-overview-1.png) |
 
 ### 3.6.3. **Set Up Git Webhook**
 
