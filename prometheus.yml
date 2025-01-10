@@ -20,10 +20,10 @@ scrape_configs:
 
   - job_name: 'xyz-technologies-app'
     static_configs:
-      - targets: [ '52.90.8.68:9292' ] # Adjust port if necessary
+      - targets: [ '52.90.8.68:9393' ] # Adjust port if necessary
   - job_name: 'xyz-technologies-app2'
     static_configs:
-      - targets: [ '52.90.8.68:9393' ] # Adjust port if necessary
+      - targets: [ '52.90.8.68:9494' ] # Adjust port if necessary
 
   - job_name: 'node_exporter'
     static_configs:

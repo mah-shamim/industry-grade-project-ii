@@ -370,7 +370,7 @@ pipeline {
         DOCKER_REGISTRY = 'https://index.docker.io/v1/' // For DockerHub
         CONTAINER_NAME = "xyz-technologies"
         DOCKER_TAG = "${BUILD_ID}"  // Use the BUILD_ID as the tag
-        CONTAINER_PORT = "9292"  // Use the BUILD_ID as the tag
+        CONTAINER_PORT = "9393"  // Use the BUILD_ID as the tag
     }
     stages {
         stage('Code Checkout') {
@@ -585,7 +585,7 @@ Create an Ansible playbook for deployment:
           image: "{{ image_name }}"
           state: started
           published_ports:
-             - "9292:8080"
+             - "9393:8080"
 
      - name: Log in to Docker Hub
        docker_login:

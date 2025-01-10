@@ -3,7 +3,7 @@
 DOCKER_IMAGE="mahshamim/xyz-technologies"
 CONTAINER_NAME="xyz-technologies"
 DOCKER_TAG=$BUILD_ID
-PORT=9292
+PORT=9393
 
 # Check if the container is running
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then

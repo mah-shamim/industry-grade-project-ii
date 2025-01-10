@@ -76,7 +76,7 @@
         image: "{{ image_name }}"
         state: started
         published_ports:
-          - "9292:8080"
+          - "9393:8080"
 
     #- name: Log in to Docker Hub
       #command: docker login -u "{{ docker_username }}" -p "{{ docker_password }}"
