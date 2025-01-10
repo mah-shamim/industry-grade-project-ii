@@ -492,7 +492,7 @@ pipeline {
     6. Save the webhook.
 
        | GitHub Project url                              | GitHub hook trigger for GITScm polling          |
-              |-------------------------------------------------|-------------------------------------------------|
+       |-------------------------------------------------|-------------------------------------------------|
        | ![GitHub Webhook](./images/github-hooks-01.png) | ![GitHub Webhook](./images/github-hooks-02.png) |
        | ![GitHub Webhook](./images/github-hooks-03.png) | ![GitHub Webhook](./images/github-hooks-04.png) |
 
