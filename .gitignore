@@ -1,0 +1,5 @@
+.idea
+*.pem
+.env
+target
+data

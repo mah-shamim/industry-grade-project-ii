@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_CREDENTIALS_ID = 'dockerhub'
+        ANSIBLE_PLAYBOOK = 'playbook.yml' // Path to your Ansible playbook
+        // Use the full path instead of ~
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
+    }
+    stages {
+        stage('Code Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/mah-shamim/industry-grade-project-i.git'
+            }
+        }
+        stage('Run Ansible Playbook') {
+            steps {
+                script {
+                    // Use the withCredentials block to inject Docker Hub credentials
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        withEnv(['KUBECONFIG_PATH=/var/lib/jenkins/.kube/config']) {
+                            sh 'ansible-playbook -i ~/ansible/inventory.ini playbook.yml --become'
+                        }
+                    }
+                }
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Ansible playbook executed successfully!'
+        }
+        failure {
+            echo 'Ansible playbook execution failed.'
+        }
+    }
+}

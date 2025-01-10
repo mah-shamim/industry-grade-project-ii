@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xyz-technologies-ansible-deployment
+  namespace: "abc-technologies-ansible"  # Add your desired namespace here
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: xyz-technologies-ansible
+  template:
+    metadata:
+      labels:
+        app: xyz-technologies-ansible
+    spec:
+      containers:
+        - name: xyz-technologies-ansible
+          image: mahshamim/xyz-technologies-ansible:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"  # Specify the active profile if needed
